@@ -9,13 +9,15 @@ const app = express()
 
 dbConnect();
 
-const corsConfig = {
-    origin: [ "https://tourbackend.herokuapp.com/tours", "https://mytoursites.netlify.app"],
+app.use(
+  cors({
+    origin: "*",
+    methods: "GET,POST",
+    allowedHeaders: "Content-Type,Authorization",
     credentials: true,
-    methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
-    allowedHeaders: ['Content-Type']
-};
-app.use(cors(corsConfig));
+    preflightContinue: true,
+  })
+);
 
 app.use('/tours',tourRoute)
 const PORT = process.env.PORT||9000
