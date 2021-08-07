@@ -11,7 +11,7 @@ dbConnect();
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://mytoursites.netlify.app/",
     methods: "GET,POST",
     allowedHeaders: "Content-Type,Authorization",
     credentials: true,
